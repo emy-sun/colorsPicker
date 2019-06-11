@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+HK&display=swap');
+
+body {
+    position: relative;
+    font-family: 'Noto Sans HK', sans-serif;
+    color: #3B3B3B;	
+}
+
+.colorSet {
+    display: flex;
+    margin: 2rem 2rem 1rem 2rem;
+}
+
+.color {
+    margin-right: 0.5rem;
+}
+
+p {
+    margin: 0.5rem 0;
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	border: none;
+	width: 65px;
+    height: 65px;
+    padding: 0;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1), 0 3px 3px rgba(0,0,0,0.1);
+    outline: none;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
+
+.addButton {
+    border: 2px solid lightgrey;
+    background-color: lightgrey;
+    font-size: 16px;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 999px;
+    position: absolute;
+    top: 0.9rem;
+    left: 4.9rem;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    outline: none;
+}
+.addButton:after, .addButton:before {
+    content: "";
+    display: block;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.addButton:before {
+    height: 1em;
+    width: 0.2em;
+}
+.addButton:after {
+    height: 0.2em;
+    width: 1em;
+}
+
+.exportBtn {
+    margin-left: 2rem;
+    border: 2px solid lightgrey;
+    background-color: lightgrey;
+    font-size: 16px;
+    font-weight: bold;
+    height: 2.5rem;
+    width: 6rem;
+    border-radius: 999px;
+    color: white;
+    outline: none;
+    box-shadow: 0  15px 10px -10px rgba(0, 0, 0, 0.4)
