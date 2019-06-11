@@ -2,7 +2,7 @@ let uniqIndex = 1;
 let colorSet = document.getElementById('js_colorSet');
 
 const createFirstColor = () => {
-    uniqIndex; 
+    uniqIndex;
     const div = document.createElement('div');
     div.id = 'js_color' + (uniqIndex);
     div.className = 'color';
@@ -10,7 +10,7 @@ const createFirstColor = () => {
     colorSet.appendChild(div);
 
     document.getElementById('js_colorCode' + uniqIndex).onchange = function () {
-        newColor = this.value; 
+        newColor = this.value;
         updateColors(newColor, 1);
         output.innerText = newColor;
     }
@@ -35,10 +35,11 @@ let colorsArray = [
 
 const updateColors = (newColor, number) => {
     colorsArray = colorsArray.map((el, index) => {
-        if(index === number - 1) {
-        return Object.assign(el, {
-            id: colorNumber,
-            color: newColor});
+        if (index === number - 1) {
+            return Object.assign(el, {
+                id: colorNumber,
+                color: newColor
+            });
         }
         return el;
     });
@@ -46,21 +47,21 @@ const updateColors = (newColor, number) => {
     return colorsArray;
 }
 
-const addColor = () => colorsArray.push({id: uniqIndex, color: '#909090'});
+const addColor = () => colorsArray.push({ id: uniqIndex, color: '#909090' });
 
-addColorButton.onclick = function() {
-    ++uniqIndex; 
+addColorButton.onclick = function () {
+    ++uniqIndex;
     colorNumber = uniqIndex;
     const div = document.createElement('div');
     div.id = 'js_color' + (uniqIndex);
     div.className = 'color';
     div.innerHTML += `<p>${uniqIndex}</p><input type='color' id="${'js_colorCode' + uniqIndex}" value='#909090' colorNumber=${uniqIndex}><p id='output${uniqIndex}' class='colorValue'>#909090</p>`;
     colorSet.appendChild(div);
-    $('button').animate({left: "+=73"}, 500);
-    addColor();  
-    
+    $('button').animate({ left: "+=73" }, 500);
+    addColor();
+
     document.getElementById('js_colorCode' + uniqIndex).onchange = function () {
-        newColor = this.value; 
+        newColor = this.value;
         updateColors(newColor, colorNumber);
         let output = document.getElementById("output" + uniqIndex);
         output.innerText = newColor;
@@ -69,18 +70,25 @@ addColorButton.onclick = function() {
 
 exportBtn.addEventListener('click', () => {
     let colorValue = document.querySelectorAll('.colorValue'); 
+    let div = document.createElement('div');
+    div.id = 'hidden'
+    document.body.appendChild(div);
+    const newArray = [];
     colorValue.forEach(color => {
-        const selection = window.getSelection();
-        const range = document.createRange();
-        range.selectNodeContents(color);
-        selection.removeAllRanges();
-        selection.addRange(range);
-
-        document.execCommand('copy');
-        selection.removeAllRanges();
-
-        setTimeout(() => {
-            console.log(color.textContent);
-        }, 1000);
+        newArray.push(color.textContent);
+        let str = newArray.join(', ');
+        div.innerText = str;
     });
-});
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(div);
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    document.execCommand('copy');
+    selection.removeAllRanges();
+
+    setTimeout(() => {
+        console.log(div.textContent);
+    }, 1200);
+})

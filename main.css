@@ -77,4 +77,9 @@ input[type="color"]::-webkit-color-swatch {
     border-radius: 999px;
     color: white;
     outline: none;
-    box-shadow: 0  15px 10px -10px rgba(0, 0, 0, 0.4)
+    box-shadow: 0  15px 10px -10px rgba(0, 0, 0, 0.4)ж
+} 
+
+#hidden {
+    opacity: 0;
+  }
